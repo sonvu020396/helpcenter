@@ -1,0 +1,36 @@
+version: "2"
+services:
+  web: #phoenix da duoc doi thanh web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      PG_USERNAME: postgres
+      PG_PASSWORD: postgres
+      PG_HOST: postgres
+    ports:
+      - "6000:4000"
+    volumes:
+      - .:/app
+    links:
+      - postgres
+    depends_on:
+      - postgres
+  postgres:
+    image: kiasaki/alpine-postgres:9.5
+    ports:
+      - '5433:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: helpcenter_dev
+    volumes:
+      - db_data
+  da_data:
+    image: postgres:9.6.5-alpine
+    volumes:
+      - /var/lib/postgres
+volumes:
+  db_data:
+    
+
