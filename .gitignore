@@ -2,6 +2,7 @@
 /_build
 /db
 /deps
+/docker
 /*.ez
 
 # Generated on crash by the VM
