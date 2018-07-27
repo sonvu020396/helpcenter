@@ -1,19 +1,24 @@
-defmodule HelpCenter.Tools do
+defmodule HelpCenter.Tools do  
+  @email_regex ~r/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/
 
-  def is_email(email) when is_binary(email) do
-    case Regex.run(~r/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/, email) do
-      nil ->
-        {:error, "Invalid email"}
-      [email] ->
-        try do
-          Regex.run(~r/(\w+)@([\w.]+)/, email) |> validate_email
-        rescue
-          _ -> {:error, "Invalid email"}
-        end
+  def is_valid_email(email) when is_nil(email), do: false
+  def is_valid_email(email) when is_binary(email) do
+    case Regex.run(@email_regex, email) do
+      nil -> false
+      [_] -> true
     end
   end
-  
+
   def is_empty?(text) when is_nil(text), do: true
+  def is_empty?([]), do: true
+  def is_empty?(map) when is_map(map), do: (if map == %{}, do: true, else: false)
+  def is_empty?(text) when text == "", do: true
+  def is_empty?(text) when text == "undefined", do: true
+  def is_empty?(_text), do: false
+
+  # defp valid_password?(password) when byte_size(password) > 6 do
+  #   true
+  # end
 
   def append_map_key(map, key, value) do
     if key && value do

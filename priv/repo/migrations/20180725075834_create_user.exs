@@ -14,8 +14,4 @@ defmodule HelpCenter.Repo.Migrations.CreateUser do
       timestamps()
     end
   end
-
-  alter table(:users) do
-    add :password, :string
-  end
 end

@@ -9,7 +9,7 @@ services:
       PG_PASSWORD: postgres
       PG_HOST: postgres
     ports:
-      - "6000:4000"
+      - "4000:6000"
     volumes:
       - .:/app
     links:

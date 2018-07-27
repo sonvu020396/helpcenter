@@ -1,13 +1,14 @@
 defmodule HelpCenter.User do
   use HelpCenter.Web, :model
 
+  @primary_key {:id, :binary_id, autogenerate: true}
   schema "users" do
     field :username, :string
     field :email, :string
     field :password, :string
     field :phone, :string
     field :role, :string
-    field :is_active, :boolean, default: false
+    field :is_active, :boolean, default: true
     field :fb_id, :string
 
     timestamps()

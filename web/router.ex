@@ -9,8 +9,8 @@ defmodule HelpCenter.Router do
     pipe_through :api
 
     scope "/v1", V1, as: :v1 do
-      get "/register",  UserController, :register
-      
+      post "/register",  UserController, :register
+      post "/login",  UserController, :login
     end
   end
 end
