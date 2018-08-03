@@ -19,7 +19,7 @@ defmodule HelpCenter.Mixfile do
   def application do
     [mod: {HelpCenter, []},
      applications: [:phoenix, :phoenix_pubsub, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :postgrex, :httpoison]]
   end
 
   # Specifies which paths to compile per environment.
@@ -37,7 +37,9 @@ defmodule HelpCenter.Mixfile do
      {:gettext, "~> 0.11"},
      {:comeonin, "~> 2.3"},
      {:poison, "~> 3.0", override: true},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:httpoison, "~> 1.0"},
+     {:json_web_token, "~> 0.2.5"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
