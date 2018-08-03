@@ -115,9 +115,6 @@ defmodule HelpCenter.V1.UserController do
     phone = to_string(phone)
     # convert to string
 
-    # data = %{:fb_id => fb_id, :username => username, :email => email, :phone => phone}
-    # json conn,%{data: data }
-
     if user = Repo.get_by(User, email: email) do
       Tools.json_error(conn,"Email is register")
     else
