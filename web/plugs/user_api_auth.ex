@@ -5,7 +5,7 @@ defmodule HelpCenter.API.Plugs.UserAuth do
   def init(opts), do: opts
 
   def call(conn, _) do
-   #IO.inspect conn
+  #  IO.inspect conn
     case Tools.get_access_token_from_params(conn) do
       nil -> Tools.json_error(conn, "Thiếu access_token", 400) 
       access_token ->
@@ -15,13 +15,13 @@ defmodule HelpCenter.API.Plugs.UserAuth do
           :expired_token -> Tools.json_error(conn, "access_token đã hết hạn", 400)
           :deleted -> Tools.json_error(conn, "Tài khoản không tồn tại hoặc đã bị khoá.", 404)
           assigned_conn -> assigned_conn
-          IO.inspect assigned_conn
+          # IO.inspect assigned_conn
         end
     end
   end
 
   def validate_access_token(conn, access_token) do
-    IO.inspect access_token 
+    # IO.inspect access_token 
     try do
       IO.inspect "123"
       IO.inspect JsonWebToken.verify(access_token, %{key: conn.secret_key_base})

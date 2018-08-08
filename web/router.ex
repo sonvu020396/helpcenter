@@ -15,8 +15,9 @@ defmodule HelpCenter.Router do
       get "/check", UserController, :checkjwt
       # post "/showuser", UserController, :showuser
       get "/showuser", UserController, :showuser  
-      # get "/registerfb", UserController, :register_by_account_facebook
+      #get "/registerfb", UserController, :register_by_account_facebook
       post "/registerfb", UserController, :register_by_account_facebook
+      post "/question", UserController, :create_question
     end
   end
   

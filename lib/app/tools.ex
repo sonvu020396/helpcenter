@@ -16,39 +16,18 @@ defmodule HelpCenter.Tools do
   def is_empty?(text) when text == "undefined", do: true
   def is_empty?(_text), do: false
 
-  # defp validpassword(password) when is_list(password) do
-  #   length(password) >= 6
-  # end
-
-  # def get_access_token_from_params(conn) do
-  #   authorization = List.first(Plug.Conn.get_req_header(conn, "authorization"))
-  #   #IO.inspect authorization
-  #   if !is_nil(authorization) do
-  #     parts = String.split(authorization, " ")
-  #     if Enum.at(parts, 0) == "Bearer" do
-  #       Enum.at(parts, 1)
-  #     else
-  #       nil
-  #     end
-  #   end
-  # end
-
-
   def get_access_token_from_params(conn) do
-    authorization = List.first(Plug.Conn.get_req_header(conn, "authorization")) # xem lai Plug.Conn.get_req_header(conn, "authorization")
+    authorization = List.first(Plug.Conn.get_req_header(conn, "authorization"))
     #IO.inspect authorization
-    parts = String.split(authorization, " ")
-    #IO.inspect parts
-    jwt = Enum.at(parts,1)
-    #IO.inspect jwt
-    if !is_nil(jwt) do
-      conn = jwt
-      IO.inspect conn
-    else
-      nil
+    if !is_nil(authorization) do
+      parts = String.split(authorization, " ")
+      if Enum.at(parts, 0) == "Bearer" do
+        Enum.at(parts, 1)
+      else
+        nil
+      end
     end
   end
-
 
   def append_map_key(map, key, value) do
     if key && value do
@@ -66,4 +45,5 @@ defmodule HelpCenter.Tools do
     |> Plug.Conn.send_resp(code, Poison.encode!(response))
     |> Plug.Conn.halt
   end
+
 end

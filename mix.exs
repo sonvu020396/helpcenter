@@ -19,7 +19,7 @@ defmodule HelpCenter.Mixfile do
   def application do
     [mod: {HelpCenter, []},
      applications: [:phoenix, :phoenix_pubsub, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :httpoison]]
+                    :phoenix_ecto, :postgrex, :httpoison, :oauth2]]
   end
 
   # Specifies which paths to compile per environment.
@@ -39,6 +39,7 @@ defmodule HelpCenter.Mixfile do
      {:poison, "~> 3.0", override: true},
      {:cowboy, "~> 1.0"},
      {:httpoison, "~> 1.0"},
+     {:oauth2, "~> 0.9"},
      {:json_web_token, "~> 0.2.5"}]
   end
 

@@ -13,7 +13,7 @@ config :help_center,
 config :help_center, HelpCenter.Endpoint,
   url: [host: "localhost"],
   # secret_key_base: "+CFURqX94qLHbAF3D/7tDfCKRYdWEiak91vdtxqPg90O7+GzUpB3n7enKc9tRSaX",
-  secret_key_base: "gZH75aKtMN3Yj0iPS4hcgUuTwjAzZr9C", #change secret_key_base after create jwt to key === secret_key_base
+  secret_key_base: "+CFURqX94qLHbAF3D/7tDfCKRYdWEiak91vdtxqPg90O7+GzUpB3n7enKc9tRSa", #change secret_key_base after create jwt to key === secret_key_base
   render_errors: [view: HelpCenter.ErrorView, accepts: ~w(json)],
   pubsub: [name: HelpCenter.PubSub,
            adapter: Phoenix.PubSub.PG2]
